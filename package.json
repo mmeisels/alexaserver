@@ -1,43 +1,29 @@
 {
-  "name": "alexa-app-server",
-  "version": "2.2.4",
-  "description": "A web server module for Alexa (Amazon Echo) apps (skills) using Node.js, Express, and alexa-app",
+  "name": "alexaserver",
+  "version": "1.0.0",
+  "description": "Sample Alexa Server Project",
   "main": "index.js",
-  "author": {
-    "name": "Matt Kruse"
-  },
   "dependencies": {
-    "alexa-app": "^2.1.0",
-    "bluebird": "^2.9.34",
-    "body-parser": "~1.0.1",
-    "ejs": "~0.7.1",
-    "express": "~4.0.0",
-    "hotswap": "^1.1.0"
+    "alexa-app-server": "^2.2.4"
   },
-  "devDependencies": {
-    "supervisor": "^0.6.0"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "gitHead": "9a20c21e501bc6a59542cabc8af287c5aa815c14",
-  "_id": "alexa-app-server@2.2.4",
-  "scripts": {},
-  "_shasum": "6e3fb36d97cd6ae33e9f1ac87b03bf7db5965419",
-  "_from": "alexa-app-server@*",
-  "_npmVersion": "2.9.1",
-  "_nodeVersion": "0.12.3",
-  "_npmUser": {
-    "name": "mkruse",
-    "email": "github@mattkruse.com"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kenji776/AlexaServer1.git"
   },
-  "maintainers": [
-    {
-      "name": "mkruse",
-      "email": "github@mattkruse.com"
-    }
+  "keywords": [
+    "alexa",
+    "test",
+    "server",
+    "echo"
   ],
-  "dist": {
-    "shasum": "6e3fb36d97cd6ae33e9f1ac87b03bf7db5965419",
-    "tarball": "https://registry.npmjs.org/alexa-app-server/-/alexa-app-server-2.2.4.tgz"
+  "author": "Daniel Llewellyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kenji776/AlexaServer1/issues"
   },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/alexa-app-server/-/alexa-app-server-2.2.4.tgz"
+  "homepage": "https://github.com/Kenji776/AlexaServer1#readme"
 }
