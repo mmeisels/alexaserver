@@ -17,7 +17,7 @@ app.error = function( exception, request, response ) {
 	response.say( 'Sorry an error occured ' + error.message);
 };
 
-app.intent('sayNumber',
+app.intent('sayHeroku',
   {
     "slots":{"name":"AMAZON.US_FIRST_NAME"}
 	,"utterances":[
