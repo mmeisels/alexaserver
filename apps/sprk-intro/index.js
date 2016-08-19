@@ -65,12 +65,13 @@ app.intent('sayHeroku',
 					}
 					console.log("Oppty Amount Total : " + opptyAmount);
 				});
+
     	}
 			console.log("done ? : " + result.done);
+
 		});
-	}
-	console.log("Speech Done!");
-  response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + '. ' + accountName + ' has total Opportunity Amount value of ' + opptyAmount);
+		response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of " + opptyAmount +".");
+  }
 );
 
 module.exports = app;
