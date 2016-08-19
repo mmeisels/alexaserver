@@ -57,13 +57,14 @@ app.intent('sayHeroku',
 				accountName = record.Name;
 				accountId = record.Id;
 				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = " +accountId , function(err1, result1) {
-				if (err1) { return console.error(err1); }
-				console.log("Oppty total : " + result1.totalSize);
-				for (var j=0; j<result1.records.length; j++) {
-					var record1 = result1.records[i];
-	      	opptyAmount = opptyAmount + record1.Amount;
-				}
-				console.log("Oppty total : " + opptyAmount);
+					if (err1) { return console.error(err1); }
+					console.log("Oppty total : " + result1.totalSize);
+					for (var j=0; j<result1.records.length; j++) {
+						var record1 = result1.records[i];
+	      		opptyAmount = opptyAmount + record1.Amount;
+					}
+					console.log("Oppty total : " + opptyAmount);
+				});
 
     	}
 			console.log("done ? : " + result.done);
