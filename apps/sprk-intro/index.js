@@ -44,8 +44,17 @@ app.intent('sayHeroku',
   function(request,response) {
 		var name = request.slot('name');
     var records = [];
-		var query = conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account");
-		console.log('Query size ' + query.totalSize);
+		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account", function(err, result) {
+		  if (err) { return console.error(err); }
+		  console.log("total : " + result.totalSize);
+		  console.log("fetched : " + result.records.length);
+		  console.log("done ? : " + result.done);
+		  if (!result.done) {
+		    // you can use the locator to fetch next records set.
+		    // Connection#queryMore()
+		    console.log("next records URL : " + result.nextRecordsUrl);
+		  }
+		});
 		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
   }
 );
