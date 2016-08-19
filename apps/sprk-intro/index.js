@@ -48,14 +48,13 @@ app.intent('sayHeroku',
 		  if (err) { return console.error(err); }
 		  console.log("total : " + result.totalSize);
 		  console.log("fetched : " + result.records.length);
-		  console.log("Account ? : " + result.Account.Id);
-			console.log("ID ? : " + result.Account.Id);
-			console.log("done ? : " + result.done);
-			for (var i=0; i<result.length; i++) {
+		  for (var i=0; i<result.length; i++) {
       	var record = result[i];
       	console.log("Name: " + record.Name);
       	console.log("Created Date: " + record.CreatedDate);
     	}
+			console.log("done ? : " + result.done);
+			
 		});
 		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
   }
