@@ -70,7 +70,9 @@ app.intent('sayHeroku',
 			console.log("done ? : " + result.done);
 
 		});
+		console.log("done query ? : ");
 		response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of " + opptyAmount +".");
+		console.log("done response ? : ");
   }
 );
 
