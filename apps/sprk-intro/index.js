@@ -18,7 +18,6 @@ conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', 
   // logged in user property
   console.log("User ID: " + userInfo.id);
   console.log("Org ID: " + userInfo.organizationId);
-  // ...
 });
 
 app.launch( function( request, response ) {
@@ -46,7 +45,7 @@ app.intent('sayHeroku',
 		var name = request.slot('name');
     var records = [];
 		var query = conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account");
-		console.log(query.totalSize);
+		console.log('Query size ' + query.totalSize);
 		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
   }
 );
