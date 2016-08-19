@@ -46,6 +46,7 @@ app.intent('sayHeroku',
     var records = [];
 		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account", function(err, result) {
 		  if (err) { return console.error(err); }
+			console.log("Result : " + result);
 		  console.log("total : " + result.totalSize);
 		  console.log("fetched : " + result.records.length);
 		  for (var i=0; i<result.length; i++) {
@@ -54,7 +55,7 @@ app.intent('sayHeroku',
       	console.log("Created Date: " + record.CreatedDate);
     	}
 			console.log("done ? : " + result.done);
-			
+
 		});
 		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
   }
