@@ -44,7 +44,7 @@ app.intent('sayHeroku',
   function(request,response) {
 		var name = request.slot('name');
     var records = [];
-		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account Where Name like '%'" +name+"'%'" , function(err, result) {
+		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account Where Name like '%" +name+"%'" , function(err, result) {
 		  if (err) { return console.error(err); }
 		  console.log("total : " + result.totalSize);
 		  console.log("fetched : " + result.records.length);
