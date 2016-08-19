@@ -21,7 +21,9 @@ app.intent('sayHeroku',
   {
     "slots":{"name":"AMAZON.US_FIRST_NAME"}
 	,"utterances":[
-		"tell me where you are running {name}"
+		"say the number",
+		"tell me where you are running {name}",
+		"test"
 		]
   },
   function(request,response) {
