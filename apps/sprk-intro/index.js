@@ -43,6 +43,9 @@ app.intent('sayHeroku',
   },
   function(request,response) {
 		var name = request.slot('name');
+		var accountName;
+		var accountId;
+		var opptyAmount=0;
     var records = [];
 		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account Where Name like '%" +name+"%'" , function(err, result) {
 		  if (err) { return console.error(err); }
@@ -51,12 +54,22 @@ app.intent('sayHeroku',
 		  for (var i=0; i<result.records.length; i++) {
       	var record = result.records[i];
       	console.log("Name: " + record.Name);
-      	console.log("Created Date: " + record.CreatedDate);
+				accountName = record.Name;
+				accountId = record.Id;
+				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = " +accountId , function(err1, result1) {
+				if (err1) { return console.error(err1); }
+				console.log("Oppty total : " + result1.totalSize);
+				for (var j=0; j<result1.records.length; j++) {
+					var record1 = result1.records[i];
+	      	opptyAmount = opptyAmount + record1.Amount;
+				}
+				console.log("Oppty total : " + opptyAmount);
+
     	}
 			console.log("done ? : " + result.done);
 
 		});
-		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
+		response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + '. ' + accountName);
   }
 );
 
