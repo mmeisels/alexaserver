@@ -56,7 +56,7 @@ app.intent('sayHeroku',
       	console.log("Name: " + record.Name);
 				accountName = record.Name;
 				accountId = record.Id;
-				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = " +accountId , function(err1, result1) {
+				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = '" +accountId + "'", function(err1, result1) {
 					if (err1) { return console.error(err1); }
 					console.log("Oppty total : " + result1.totalSize);
 					for (var j=0; j<result1.records.length; j++) {
