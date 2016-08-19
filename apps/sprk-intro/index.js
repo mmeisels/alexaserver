@@ -3,38 +3,25 @@ module.change_code = 1;
 
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'sprk-intro' );
-var sf = require('nforce');
+var sf = require('node-salesforce');
 
+var conn = new sf.Connection({
+  // you can change loginUrl to connect to sandbox or prerelease env.
+  // loginUrl : 'https://test.salesforce.com'
+});
+conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd1', function(err, userInfo) {
+  if (err) { return console.error(err); }
+  // Now you can get the access token and instance URL information.
+  // Save them to establish connection next time.
+  console.log(conn.accessToken);
+  console.log(conn.instanceUrl);
+  // logged in user property
+  console.log("User ID: " + userInfo.id);
+  console.log("Org ID: " + userInfo.organizationId);
+  // ...
+});
 
 app.launch( function( request, response ) {
-	var org = nforce.createConnection({
-			clientId: '3MVG9ZL0ppGP5UrD7bdKrIeH_G8yN3HCU9hsbJF9bXFVV.rk6__dE8YqktR8.4Um42rx1HI3WTzrrJCsK00uA',
-			clientSecret: '5774826133130504419',
-			redirectUri: 'https://alexaserver1.herokuapp.com/alexa/sprk-intro',
-			mode: 'single'
-
-			org.authenticate(req.query, function(err) {
-				console.log('Connected Fine');
-				if (!err) {
-					org.query({ query: 'SELECT id, name, type, industry, rating FROM Account' }, function(err, results) {
-						if (!err) {
-							console.log('Results Fine');
-						}
-						else {
-							console.log('Error Results');
-						}
-					});
-				}
-				else {
-					if (err.message.indexOf('invalid_grant') >= 0) {
-						console.log('Error Connect');
-					}
-					else {
-						console.log('Error MEssage ' + err.message);
-					}
-				}
-			});
-	});
 	response.say( 'Welcome to the Salesforce Intro' ).reprompt( 'This works nicely.' ).shouldEndSession( false );
 } );
 
@@ -58,8 +45,9 @@ app.intent('sayHeroku',
   function(request,response) {
 		var name = request.slot('name');
     var records = [];
-
-    response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
+		var query = conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account");
+		console.log(query.totalSize);
+		response.say("Hi, my name is Alexa. I am running on Heroku. Thanks " + name);
   }
 );
 
