@@ -49,8 +49,8 @@ app.intent('sayHeroku',
 			console.log("Result : " + result);
 		  console.log("total : " + result.totalSize);
 		  console.log("fetched : " + result.records.length);
-		  for (var i=0; i<result.length; i++) {
-      	var record = result[i];
+		  for (var i=0; i<result.records.length; i++) {
+      	var record = result.records[i];
       	console.log("Name: " + record.Name);
       	console.log("Created Date: " + record.CreatedDate);
     	}
