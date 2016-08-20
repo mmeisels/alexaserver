@@ -74,7 +74,7 @@ app.intent('sayHeroku',
 		}
 	}, function(err, results) {
     // results is now equals to: {one: 'abc\n', two: 'xyz\n'}
-	});
+	})
 );
 
 module.exports = app;
