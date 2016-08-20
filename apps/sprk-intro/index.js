@@ -60,14 +60,14 @@ app.intent('sayHeroku',
 				accountId = record.Id;
 				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = '" +accountId + "'", function(err1, result1) {
 					if (err1) { return console.error(err1); }
-					console.log("Oppty total : " + result1.totalSize);
+					//console.log("Oppty total : " + result1.totalSize);
 					for (var j=0; j<result1.records.length; j++) {
 						var record1 = result1.records[j];
 	      		opptyAmount = opptyAmount + record1.Amount;
 					}
-					console.log("Oppty Amount Total : " + opptyAmount);
-					console.log("done response : ");
-					response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of " + opptyAmount +".");
+					//console.log("Oppty Amount Total : " + opptyAmount);
+					//console.log("done response : ");
+					response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of $" + opptyAmount +".");
 					response.send();
 				});
     	}
