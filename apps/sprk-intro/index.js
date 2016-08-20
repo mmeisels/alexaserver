@@ -49,28 +49,27 @@ app.intent('sayHeroku',
 		var opptyAmount=0;
     var records = [];
 		conn.query("SELECT Id, Name, Type, BillingState, BillingCity, BillingStreet FROM Account Where Name like '%" +name+"%'" , function(err, result) {
-		   if(!err && resp.records) {
-				 	console.log("total : " + result.totalSize);
-				  console.log("fetched : " + result.records.length);
-				  for (var i=0; i<result.records.length; i++) {
-		      	var record = result.records[i];
-		      	console.log("Name: " + record.Name);
-						accountName = record.Name;
-						accountId = record.Id;
-						conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = '" +accountId + "'", function(err1, result1) {
-							if (err1) { return console.error(err1); }
-							console.log("Oppty total : " + result1.totalSize);
-							for (var j=0; j<result1.records.length; j++) {
-								var record1 = result1.records[j];
-			      		opptyAmount = opptyAmount + record1.Amount;
-							}
-							console.log("Oppty Amount Total : " + opptyAmount);
-						});
-		    	}
-				}
-				console.log("done response : ");
-				response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of " + opptyAmount +".");
-				response.send();
+			if (err1) { return console.error(err1); }
+		 	console.log("total : " + result.totalSize);
+		  console.log("fetched : " + result.records.length);
+		  for (var i=0; i<result.records.length; i++) {
+      	var record = result.records[i];
+      	console.log("Name: " + record.Name);
+				accountName = record.Name;
+				accountId = record.Id;
+				conn.query("SELECT Id, Amount FROM Opportunity Where Account.Id = '" +accountId + "'", function(err1, result1) {
+					if (err1) { return console.error(err1); }
+					console.log("Oppty total : " + result1.totalSize);
+					for (var j=0; j<result1.records.length; j++) {
+						var record1 = result1.records[j];
+	      		opptyAmount = opptyAmount + record1.Amount;
+					}
+					console.log("Oppty Amount Total : " + opptyAmount);
+				});
+    	}
+			console.log("done response : ");
+			response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of " + opptyAmount +".");
+			response.send();
 		});
 		return false;
   }
