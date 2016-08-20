@@ -37,6 +37,7 @@ app.intent('sayHeroku',
   {
     "slots":{"name":"AMAZON.US_FIRST_NAME"}
 	,"utterances":[
+		"what is the total opportunity value for {name}"
 		"say the number",
 		"tell me where you are running {name}",
 		"test"
