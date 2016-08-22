@@ -28,11 +28,111 @@ conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', 
   console.log("Org ID: " + userInfo.organizationId);
 });
 
-app.launch( function( request, response ) {
-  console.log("Echo Bot onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-  var speechOutput = "Welcom to Echo Bot, Please initiate connection to drone";
-  response.say(speechOutput);
-});
+app.intent('Land',
+  {
+    "slots":{"name":"AMAZON.US_FIRST_NAME"},
+    "utterances":[
+		"Land the drone",
+		"Stop",
+		"Sleep",
+		"Go Down",
+    "Land"
+		]
+  },
+	function(request,response) {
+    var landMessage = {
+            "command" : "land",
+            "sessionId" : session.sessionId
+    };
+    console.log(pubnub.get_version());
+    //response.setShouldEndSession(true);
+    pubnub.publish({
+        channel   : 'my_channel',
+        message   : landMessage,
+        callback  : function(e) {
+             console.log( "SUCCESS!", e );
+             response.say("Drone is going down");
+             response.send();
+        },
+        error  : function(e) {
+        response.say("Can not connect to Drone");
+        response.send();
+        console.log( "FAILED! RETRY PUBLISH!", e ); }
+    });
+		return false;
+  }
+);
 
+app.intent('TakeOff',
+  {
+    "slots":{"name":"AMAZON.US_FIRST_NAME"},
+    "utterances":[
+		"Take Off",
+		"Fly",
+		"Fly the drone",
+		"Hover"
+    "Go Up"
+    "Blink"
+		]
+  },
+	function(request,response) {
+    var takeOffmessage = {
+             "command" : "takeOff",
+             "sessionId" : session.sessionId
+    };
+    console.log(pubnub.get_version());
+    pubnub.publish({
+         channel   : 'my_channel',
+         message   : takeOffmessage,
+         callback  : function(e) {
+              console.log( "SUCCESS!", e );
+              response.say("Drone is flying");
+              response.send();
+         },
+         error     : function(e) {
+              response.say("Could not connect to Drone");
+              response.send();
+             console.log( "FAILED! RETRY PUBLISH!", e ); }
+     });
+		return false;
+  }
+);
+
+
+app.intent('Initiate',
+  {
+    "slots":{"name":"AMAZON.US_FIRST_NAME"},
+    "utterances":[
+		"Blink",
+		"Initiate Drone",
+		"Initiate",
+		"Start Drone",
+    "Wake up",
+    "Wake up Spider"
+		]
+  },
+	function(request,response) {
+    var initiateMessage = {
+            "command" : "initiate",
+            "sessionId" : session.sessionId
+        };
+        console.log(pubnub.get_version());
+        pubnub.publish({
+          channel   : 'my_channel',
+          message   : initiateMessage,
+          callback  : function(e) {
+          console.log( "SUCCESS!", e );
+          response.say("Drone is ready to fly");
+          response.send();
+        },
+        error     : function(e) {
+          response.say("Could not connect to Drone");
+          response.send();
+          console.log( "FAILED! RETRY PUBLISH!", e );
+        }
+    });
+		return false;
+  }
+);
 
 module.exports = app;
