@@ -44,8 +44,6 @@ app.intent('Land',{
       command : 'land'
     };
     console.log('Land Message Done');
-    console.log(pubnub.get_version());
-    console.log('Got version');
     //response.setShouldEndSession(true);
     pubnub.publish({
         channel   : 'my_channel',
