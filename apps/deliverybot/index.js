@@ -4,15 +4,12 @@ module.change_code = 1;
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'deliverybot' );
 var sf = require('node-salesforce');
-var pubnub = require("pubnub");
+var PubNub = require('pubnub');
 
-var pn = new pubnub({
+var pn = new PubNub({
     ssl           : true,
-    publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
-    subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe",
-    error: function (error) {
-        console.log('Error:', error);
-    }
+    publishKey   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
+    subscribeKey : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
 });
 
 var conn = new sf.Connection({
@@ -48,14 +45,21 @@ app.intent('Land',{
       command : 'land'
     };
     console.log('Land Message Done');
-    var message = { "Hello" : "World!" };
     console.log('PN Starting');
-    pn.publish({
+    var publishConfig = {
         channel   : 'my_channel',
-        message   : message,
-        callback  : function(e) { console.log( "SUCCESS!", e ); },
-        error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
-    });
+        message   : landMessage
+    };
+    console.log('PN1 Starting');
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+        response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name ");
+        response.send();
+    })
+    } catch (e) {
+      console.log(e);
+    }
     console.log('Returned');
     return false;
   }
