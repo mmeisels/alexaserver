@@ -5,6 +5,8 @@ var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'deliverybot' );
 var sf = require('node-salesforce');
 var pubnub = require("pubnub");
+var session = require('express-session');
+
 var conn = new sf.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
   // loginUrl : 'https://test.salesforce.com'
@@ -40,15 +42,12 @@ app.intent('Land',{
   },
 	function(request,response) {
     console.log('In Land mode');
-    var landMessage = {
-      command : 'land'
-    };
     console.log('Land Message Done');
     console.log(pubnub.get_version());
     //response.setShouldEndSession(true);
     pubnub.publish({
         channel   : 'my_channel',
-        message   : landMessage,
+        message   : 'land',
         callback  : function(e) {
              console.log( "SUCCESS!", e );
              response.say("Drone is going down");
