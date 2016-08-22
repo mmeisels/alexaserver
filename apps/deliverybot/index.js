@@ -26,7 +26,7 @@ conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', 
 });
 
 app.launch(function( request, response ) {
-  response.say( 'Welcome to the The Drone Machine' ).reprompt( 'This works nicely.' ).shouldEndSession( false );
+  response.say( 'Welcome to the real Salesforce One. Good Morning Mr President.' ).reprompt( 'This works nicely.' ).shouldEndSession( false );
 });
 
 app.intent('Land',{
