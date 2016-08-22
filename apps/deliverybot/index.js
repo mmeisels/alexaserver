@@ -91,7 +91,7 @@ app.intent('TakeOff',
          channel : 'my_channel',
          message : takeOffmessage,
          callback : function(e) {
-           console.log( "SUCCESS!", e );
+           console.log( 'SUCCESS!', e );
            response.say("Drone is flying");
            response.send();
          },
@@ -100,9 +100,8 @@ app.intent('TakeOff',
               response.send();
              console.log( "FAILED! RETRY PUBLISH!", e ); }
      });
-		return false;
     console.log('Returning False Back To Alexa');
-
+		return false;
   }
 );
 
