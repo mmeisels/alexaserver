@@ -10,7 +10,7 @@ var conn = new sf.Connection({
   // loginUrl : 'https://test.salesforce.com'
 });
 
-var pubnub = new pubnub({
+var pubnub = require("pubnub")({
     ssl           : true,
     publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
@@ -44,12 +44,12 @@ app.intent('Land',{
       command : 'land'
     };
     console.log('Land Message Done');
+    var message = { "Hello" : "World!" };
     pubnub.publish({
-    channel : 'my_channel',
-    message : 'Hello from the PubNub Javascript SDK!',
-    callback : function(m){
-        console.log(m);
-      }
+        channel   : 'hello_world',
+        message   : message,
+        callback  : function(e) { console.log( "SUCCESS!", e ); },
+        error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
     });
     return false;
   }
