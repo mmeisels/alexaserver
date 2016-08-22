@@ -41,8 +41,7 @@ app.intent('Land',{
 	function(request,response) {
     console.log('In Land mode');
     var landMessage = {
-      command : 'land',
-      sessionId : session.sessionId
+      command : 'land'
     };
     console.log('Land Message Done');
     console.log(pubnub.get_version());
