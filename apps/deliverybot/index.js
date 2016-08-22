@@ -10,7 +10,7 @@ var conn = new sf.Connection({
   // loginUrl : 'https://test.salesforce.com'
 });
 
-var pubnub = new PubNub({
+var pubnub = new pubnub({
     ssl           : true,
     publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
