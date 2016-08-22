@@ -52,7 +52,7 @@ app.intent('Land',{
     };
     console.log('PN1 Starting');
     try {
-      pn.publish(publishConfig, function(status, response) {
+      pn.publish(JSON.parse(publishConfig), function(status, response) {
         console.log(status, response);
       })
       response.say("Drone has taken off");
