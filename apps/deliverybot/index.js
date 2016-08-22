@@ -4,12 +4,13 @@ module.change_code = 1;
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'deliverybot' );
 var sf = require('node-salesforce');
+var pubnub = require("pubnub");
 var conn = new sf.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
   // loginUrl : 'https://test.salesforce.com'
 });
 
-var pubnub = require('pubnub').init({
+var pn = pubnub({
     ssl           : true,
     publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
@@ -44,7 +45,7 @@ app.intent('Land',{
     };
     console.log('Land Message Done');
     var message = { "Hello" : "World!" };
-    pubnub.publish({
+    pn.publish({
         channel   : 'hello_world',
         message   : message,
         callback  : function(e) { console.log( "SUCCESS!", e ); },
@@ -73,7 +74,7 @@ app.intent('TakeOff',
              "sessionId" : session.sessionId
     };
     console.log(pubnub.get_version());
-    pubnub.publish({
+    pn.publish({
          channel   : 'my_channel',
          message   : takeOffmessage,
          callback  : function(e) {
@@ -111,7 +112,7 @@ app.intent('Initiate',
         };
         console.log('In Initiate Message mode');
         console.log(pubnub.get_version());
-        pubnub.publish({
+        pn.publish({
           channel   : 'my_channel',
           message   : initiateMessage,
           callback  : function(e) {
