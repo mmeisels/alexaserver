@@ -55,7 +55,7 @@ app.intent('Land',{
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone has taken off");
+      response.say("Drone has landed");
       response.send();
     } catch (e) {
       console.log(e);
@@ -79,25 +79,27 @@ app.intent('TakeOff',
   },
 	function(request,response) {
     console.log('In Take Off mode');
-    var takeOffmessage = {
-             "command" : "takeOff",
-             "sessionId" : session.sessionId
+    var takeoffMessage = {
+      "command" : "takeOff"
     };
-    console.log(pubnub.get_version());
-    pn.publish({
-         "channel"   : "my_channel",
-         "message"   : takeOffmessage,
-         callback  : function(e) {
-              console.log( "SUCCESS!", e );
-              response.say("Drone is flying");
-              response.send();
-         },
-         error     : function(e) {
-              response.say("Could not connect to Drone");
-              response.send();
-             console.log( "FAILED! RETRY PUBLISH!", e ); }
-     });
-		return false;
+    console.log('Take Off Message Done');
+    console.log('PN Starting');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : takeoffMessage
+    };
+    console.log('PN1 Starting');
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone has taken off");
+      response.send();
+    } catch (e) {
+      console.log(e);
+    }
+    console.log('Returned');
+    return false;
   }
 );
 
@@ -116,27 +118,27 @@ app.intent('Initiate',
   },
 	function(request,response) {
     console.log('In Initiate mode');
-    var initiateMessage = {
-            "command" : "initiate",
-            "sessionId" : session.sessionId
-        };
-        console.log('In Initiate Message mode');
-        console.log(pubnub.get_version());
-        pn.publish({
-          channel   : 'my_channel',
-          message   : initiateMessage,
-          callback  : function(e) {
-          console.log( "SUCCESS!", e );
-          response.say("Drone is ready to fly");
-          response.send();
-        },
-        error     : function(e) {
-          response.say("Could not connect to Drone");
-          response.send();
-          console.log( "FAILED! RETRY PUBLISH!", e );
-        }
-    });
-		return false;
+    var initMessage = {
+      "command" : "initiate"
+    };
+    console.log('Initiate Message Done');
+    console.log('PN Starting');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : initMessage
+    };
+    console.log('PN1 Starting');
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone has Initiated");
+      response.send();
+    } catch (e) {
+      console.log(e);
+    }
+    console.log('Returned');
+    return false;
   }
 );
 
