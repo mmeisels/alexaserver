@@ -103,7 +103,7 @@ app.intent('TakeOff',
   }
 );
 
-app.intent('Foward',
+app.intent('Forward',
   {
     "slots":{"steps":"NUMBER","speed":"NUMBER"},
     "utterances":[
