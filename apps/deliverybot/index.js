@@ -103,6 +103,39 @@ app.intent('TakeOff',
   }
 );
 
+app.intent('Foward',
+  {
+    "slots":{"steps":"NUMBER","speed":"NUMBER"},
+    "utterances":[
+		"Foward"
+		]
+  },
+	function(request,response) {
+    var steps = request.slot('steps');
+    var speed = request.slot('speed');
+
+    console.log('Moving Forward');
+    var takeoffMessage = {
+      "command" : "forward"
+    };
+    console.log('Moving Forward Done');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : takeoffMessage
+    };
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone is moving forward " + steps + " with a speed of " + speed );
+      response.send();
+    } catch (e) {
+      response.say("Drone has errored");
+      response.send();
+    }
+    return false;
+  }
+);
 
 app.intent('Initiate',
   {
