@@ -5,8 +5,6 @@ var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'deliverybot' );
 var sf = require('node-salesforce');
 var pubnub = require("pubnub");
-var session = require('express-session');
-
 var conn = new sf.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
   // loginUrl : 'https://test.salesforce.com'
@@ -42,18 +40,25 @@ app.intent('Land',{
   },
 	function(request,response) {
     console.log('In Land mode');
+    var landMessage = {
+      "command" : "land",
+      "sessionId" : session.sessionId
+    };
     console.log('Land Message Done');
     console.log(pubnub.get_version());
+    console.log('Got version');
     //response.setShouldEndSession(true);
     pubnub.publish({
         channel   : 'my_channel',
-        message   : 'land',
+        message   : landMessage,
         callback  : function(e) {
-             console.log( "SUCCESS!", e );
+              console.log('Callback ');
+             console.log( 'SUCCESS!', e );
              response.say("Drone is going down");
              response.send();
         },
         error  : function(e) {
+          console.log('Error ');
         response.say("Can not connect to Drone");
         response.send();
         console.log( "FAILED! RETRY PUBLISH!", e ); }
