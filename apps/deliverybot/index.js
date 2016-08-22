@@ -47,8 +47,8 @@ app.intent('Land',{
     console.log('Land Message Done');
     console.log('PN Starting');
     var publishConfig = {
-        channel   : "my_channel",
-        message   : landMessage
+        "channel"   : "my_channel",
+        "message"   : landMessage
     };
     console.log('PN1 Starting');
     try {
@@ -85,8 +85,8 @@ app.intent('TakeOff',
     };
     console.log(pubnub.get_version());
     pn.publish({
-         channel   : 'my_channel',
-         message   : takeOffmessage,
+         "channel"   : "my_channel",
+         "message"   : takeOffmessage,
          callback  : function(e) {
               console.log( "SUCCESS!", e );
               response.say("Drone is flying");
