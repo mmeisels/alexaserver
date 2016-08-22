@@ -46,12 +46,15 @@ app.intent('Land',{
     };
     console.log('Land Message Done');
     var message = { "Hello" : "World!" };
+    console.log('PN Starting');
     pn.publish({
         channel   : 'hello_world',
         message   : message,
-        callback  : function(e) { console.log( "SUCCESS!", e ); },
-        error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
+        callback  : function(e) { console.log( 'SUCCESS!', e ); },
+        error     : function(e) { console.log( 'FAILED! RETRY PUBLISH!', e ); }
+        console.log('PN Done');
     });
+    console.log('Returned');
     return false;
   }
 );
