@@ -54,9 +54,9 @@ app.intent('Land',{
     try {
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
-        response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name ");
-        response.send();
-    })
+      })
+      response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name ");
+      response.send();
     } catch (e) {
       console.log(e);
     }
