@@ -44,23 +44,14 @@ app.intent('Land',{
       command : 'land'
     };
     console.log('Land Message Done');
-    //response.setShouldEndSession(true);
     pubnub.publish({
-        channel   : 'my_channel',
-        message   : landMessage,
-        callback  : function(e) {
-              console.log('Callback ');
-             console.log( 'SUCCESS!', e );
-             response.say("Drone is going down");
-             response.send();
-        },
-        error  : function(e) {
-          console.log('Error ');
-        response.say("Can not connect to Drone");
-        response.send();
-        console.log( "FAILED! RETRY PUBLISH!", e ); }
+    channel : 'my_channel',
+    message : 'Hello from the PubNub Javascript SDK!',
+    callback : function(m){
+        console.log(m);
+      }
     });
-		return false;
+    return false;
   }
 );
 
