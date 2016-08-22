@@ -39,6 +39,7 @@ app.intent('Land',{
 		]
   },
 	function(request,response) {
+    console.log('In Land mode');
     var landMessage = {
       "command" : "land",
       "sessionId" : session.sessionId
@@ -75,6 +76,7 @@ app.intent('TakeOff',
 		]
   },
 	function(request,response) {
+    console.log('In Take Off mode');
     var takeOffmessage = {
              "command" : "takeOff",
              "sessionId" : session.sessionId
@@ -111,10 +113,12 @@ app.intent('Initiate',
 		]
   },
 	function(request,response) {
+    console.log('In Initiate mode');
     var initiateMessage = {
             "command" : "initiate",
             "sessionId" : session.sessionId
         };
+        console.log('In Initiate Message mode');
         console.log(pubnub.get_version());
         pubnub.publish({
           channel   : 'my_channel',
