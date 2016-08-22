@@ -11,12 +11,10 @@ var conn = new sf.Connection({
 });
 
 var pubnub = new pubnub({
-    console.log('Setting Up Pub Nub');
+    console.log("Setting Up Pub Nub ");
     ssl           : true,
     publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
-    console.log('Finished  Pub Nub');
-
 });
 
 conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', function(err, userInfo) {
@@ -84,9 +82,7 @@ app.intent('TakeOff',
              "command" : "takeOff",
              "sessionId" : session.sessionId
     };
-    console.log('Take Off Message');
     console.log(pubnub.get_version());
-    console.log('Publishing ');
     pubnub.publish({
          channel   : 'my_channel',
          message   : takeOffmessage,
