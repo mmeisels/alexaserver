@@ -55,8 +55,7 @@ app.intent('Land',{
         message   : message,
         callback  : function(e) { console.log( "SUCCESS!", e ); },
         error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
-    },function(err) {
-      if (err) { return console.error(err); });
+    });
     console.log('Returned');
     return false;
   }
