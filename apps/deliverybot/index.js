@@ -55,7 +55,7 @@ app.intent('Land',{
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone has landed");
+      response.say("Drone has landed. Thank you for your loyalty. See you next time.");
       response.send();
     } catch (e) {
       console.log(e);
@@ -93,7 +93,7 @@ app.intent('TakeOff',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone has taken off");
+      response.say("Drone has taken off. Watch your heads people.");
       response.send();
     } catch (e) {
       console.log(e);
@@ -132,7 +132,7 @@ app.intent('Initiate',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone has Initiated");
+      response.say("Drone has Initiated. This bird is ready to go.");
       response.send();
     } catch (e) {
       console.log(e);
