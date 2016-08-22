@@ -12,7 +12,7 @@ var pn = new pubnub({
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe",
     error: function (error) {
         console.log('Error:', error);
-    },
+    };
     console.log('Setup PUBNUB');
 });
 
