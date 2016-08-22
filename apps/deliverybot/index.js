@@ -42,13 +42,13 @@ app.intent('Land',{
 	function(request,response) {
     console.log('In Land mode');
     var landMessage = {
-      "command" : 'land'
+      "command" : "land"
     };
     console.log('Land Message Done');
     console.log('PN Starting');
     var publishConfig = {
-        channel   : 'my_channel',
-        message   : landMessage
+        "channel"   : 'my_channel',
+        "message"   : landMessage
     };
     console.log('PN1 Starting');
     try {
