@@ -116,7 +116,9 @@ app.intent('Forward',
 
     console.log('Moving Forward');
     var takeoffMessage = {
-      "command" : "forward"
+      "command" : "forward",
+      "steps" : steps,
+      "speed": speed
     };
     console.log('Moving Forward Done');
     var publishConfig = {
