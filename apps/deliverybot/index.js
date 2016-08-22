@@ -4,7 +4,7 @@ module.change_code = 1;
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'deliverybot' );
 var sf = require('node-salesforce');
-var pubnub = require("pubnub");
+var pubnub = require('pubnub');
 var conn = new sf.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
   // loginUrl : 'https://test.salesforce.com'
