@@ -49,19 +49,9 @@ app.intent('Land',{
     console.log('Land Message Done');
     console.log(pubnub.get_version());
     //response.setShouldEndSession(true);
-    pubnub.publish({
-        channel   : 'my_channel',
-        message   : landMessage,
-        callback  : function(e) {
-             console.log( "SUCCESS!", e );
-             response.say("Drone is going down");
-             response.send();
-        },
-        error  : function(e) {
-        response.say("Can not connect to Drone");
-        response.send();
-        console.log( "FAILED! RETRY PUBLISH!", e ); }
-    });
+    console.log('Starting Landing Publish');
+
+    console.log('SendinG False To Alexa');
 		return false;
   }
 );
