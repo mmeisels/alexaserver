@@ -31,9 +31,8 @@ conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', 
 app.launch( function( request, response ) {
   console.log("Echo Bot onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
   var speechOutput = "Welcom to Echo Bot, Please initiate connection to drone";
-  response.ask(speechOutput);
+  response.say(speechOutput);
 });
-
 
 
 module.exports = app;
