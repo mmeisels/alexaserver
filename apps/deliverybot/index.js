@@ -11,9 +11,12 @@ var conn = new sf.Connection({
 });
 
 var pubnub = new pubnub({
+    console.log('Setting Up Pub Nub');
     ssl           : true,
     publish_key   : "pub-c-46d93d38-de2a-48fa-ba27-11b2d8dcff30",
     subscribe_key : "sub-c-573f0f1e-6828-11e6-8c1f-02ee2ddab7fe"
+    console.log('Finished  Pub Nub');
+
 });
 
 conn.login('mmeisels@demo.trolleyapp1', 'demopassw0rd8JMXR8jIgqdyVAGpyFEA238f', function(err, userInfo) {
@@ -81,21 +84,25 @@ app.intent('TakeOff',
              "command" : "takeOff",
              "sessionId" : session.sessionId
     };
+    console.log('Take Off Message');
     console.log(pubnub.get_version());
+    console.log('Publishing Message');
     pubnub.publish({
-         channel   : 'my_channel',
-         message   : takeOffmessage,
-         callback  : function(e) {
-              console.log( "SUCCESS!", e );
-              response.say("Drone is flying");
-              response.send();
+         channel : 'my_channel',
+         message : takeOffmessage,
+         callback : function(e) {
+           console.log( "SUCCESS!", e );
+           response.say("Drone is flying");
+           response.send();
          },
-         error     : function(e) {
+         error : function(e) {
               response.say("Could not connect to Drone");
               response.send();
              console.log( "FAILED! RETRY PUBLISH!", e ); }
      });
 		return false;
+    console.log('Returning False Back To Alexa');
+
   }
 );
 
