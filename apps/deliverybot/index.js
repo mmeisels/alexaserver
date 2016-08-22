@@ -42,12 +42,12 @@ app.intent('Land',{
 	function(request,response) {
     console.log('In Land mode');
     var landMessage = {
-      command : 'land'
+      "command" : "land"
     };
     console.log('Land Message Done');
     console.log('PN Starting');
     var publishConfig = {
-        channel   : 'my_channel',
+        channel   : "my_channel",
         message   : landMessage
     };
     console.log('PN1 Starting');
@@ -55,7 +55,7 @@ app.intent('Land',{
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Hi, my name is Alexa. I am running on Heroku. We have found a record for Account Name ");
+      response.say("Drone has taken off");
       response.send();
     } catch (e) {
       console.log(e);
