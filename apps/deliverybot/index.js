@@ -86,9 +86,20 @@ app.intent('TakeOff',
     };
     console.log('Take Off Message');
     console.log(pubnub.get_version());
-    console.log('Publishing Message');
-    
-    console.log('Returning False Back To Alexa');
+    console.log('Publishing ');
+    pubnub.publish({
+         channel   : 'my_channel',
+         message   : takeOffmessage,
+         callback  : function(e) {
+              console.log( "SUCCESS!", e );
+              response.say("Drone is flying");
+              response.send();
+         },
+         error     : function(e) {
+              response.say("Could not connect to Drone");
+              response.send();
+             console.log( "FAILED! RETRY PUBLISH!", e ); }
+     });
 		return false;
   }
 );
