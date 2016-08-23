@@ -206,6 +206,7 @@ app.intent('North',
       response.send();
     } catch (e) {
       response.say("Drone has errored on Forward");
+      console.log(e);
       response.send();
     }
     return false;
