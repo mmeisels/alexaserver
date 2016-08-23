@@ -212,7 +212,7 @@ app.intent('North',
   }
 );
 
-app.intent('Sou'th,
+app.intent('South',
   {
     "slots":{"steps":"NUMBER"},
     "utterances":[
