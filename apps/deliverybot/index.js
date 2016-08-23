@@ -177,4 +177,142 @@ app.intent('Initiate',
   }
 );
 
+
+app.intent('North',
+  {
+    "slots":{"steps":"NUMBER"},
+    "utterances":[
+		"north"
+		]
+  },
+	function(request,response) {
+    var steps = request.slot('steps');
+
+    console.log('Moving Forward');
+    var moveMessage = {
+      "command" : "north",
+      "steps" : steps
+    };
+    console.log('Moving North Done');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : moveMessage
+    };
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.send();
+    } catch (e) {
+      response.say("Drone has errored on Forward");
+      response.send();
+    }
+    return false;
+  }
+);
+
+app.intent('Sou'th,
+  {
+    "slots":{"steps":"NUMBER"},
+    "utterances":[
+		"south"
+		]
+  },
+	function(request,response) {
+    var steps = request.slot('steps');
+
+    console.log('Moving South');
+    var moveMessage = {
+      "command" : "south",
+      "steps" : steps
+    };
+    console.log('Moving South Done');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : moveMessage
+    };
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.send();
+    } catch (e) {
+      response.say("Drone has errored on Forward");
+      response.send();
+    }
+    return false;
+  }
+);
+
+
+app.intent('East',
+  {
+    "slots":{"steps":"NUMBER"},
+    "utterances":[
+		"east"
+		]
+  },
+	function(request,response) {
+    var steps = request.slot('steps');
+
+    console.log('Moving East');
+    var moveMessage = {
+      "command" : "east",
+      "steps" : steps
+    };
+    console.log('Moving East Done');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : moveMessage
+    };
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.send();
+    } catch (e) {
+      response.say("Drone has errored on Forward");
+      response.send();
+    }
+    return false;
+  }
+);
+
+app.intent('West',
+  {
+    "slots":{"steps":"NUMBER"},
+    "utterances":[
+		"west"
+		]
+  },
+	function(request,response) {
+    var steps = request.slot('steps');
+
+    console.log('Moving West');
+    var moveMessage = {
+      "command" : "west",
+      "steps" : steps
+    };
+    console.log('Moving West Done');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : moveMessage
+    };
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.send();
+    } catch (e) {
+      response.say("Drone has errored on Forward");
+      response.send();
+    }
+    return false;
+  }
+);
+
 module.exports = app;
