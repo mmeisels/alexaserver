@@ -194,6 +194,7 @@ app.intent('North',
       "steps" : steps
     };
     console.log('Moving North Done');
+    console.log(moveMessage);
     var publishConfig = {
         "channel"   : 'my_channel',
         "message"   : moveMessage
@@ -202,7 +203,7 @@ app.intent('North',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.say("Drone is moving " + steps);
       response.send();
     } catch (e) {
       response.say("Drone has errored on Forward");
@@ -237,7 +238,7 @@ app.intent('South',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.say("Drone is moving " + steps);
       response.send();
     } catch (e) {
       response.say("Drone has errored on Forward");
@@ -272,7 +273,7 @@ app.intent('East',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.say("Drone is moving " + steps);
       response.send();
     } catch (e) {
       response.say("Drone has errored on Forward");
@@ -306,7 +307,7 @@ app.intent('West',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      response.say("Drone is moving " + steps + " with a speed of " + speed );
+      response.say("Drone is moving " + steps);
       response.send();
     } catch (e) {
       response.say("Drone has errored on Forward");
