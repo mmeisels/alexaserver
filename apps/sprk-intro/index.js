@@ -67,7 +67,7 @@ app.intent('sayHeroku',
 					}
 					//console.log("Oppty Amount Total : " + opptyAmount);
 					//console.log("done response : ");
-					response.say("Hi, my name is Alexa. I have found a record for Account Name " + accountName + ".  "+ accountName + " has total Opportunity Amount value of $" + opptyAmount +".");
+					response.say("Hi, my name is Alexa. I have found a record for Account Name " + accountName + ".  "+ accountName + " has " + j + " opportunties with a total Opportunity Amount value of $" + opptyAmount +".");
 					response.send();
 				});
     	}
