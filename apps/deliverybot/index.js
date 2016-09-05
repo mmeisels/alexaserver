@@ -103,6 +103,41 @@ app.intent('TakeOff',
   }
 );
 
+app.intent('Dance',
+  {
+    "slots":{"name":"AMAZON.US_FIRST_NAME"},
+    "utterances":[
+		"Dance",
+		"Music",
+    "Blink",
+		]
+  },
+	function(request,response) {
+    console.log('In Dance mode');
+    var takeoffMessage = {
+      "command" : "dance"
+    };
+    console.log('Dance Message Done');
+    console.log('Dance Starting');
+    var publishConfig = {
+        "channel"   : 'my_channel',
+        "message"   : takeoffMessage
+    };
+    console.log('Dance Starting');
+    try {
+      pn.publish(publishConfig, function(status, response) {
+        console.log(status, response);
+      })
+      response.say("Drone has started to Dance. Lets get down people and boogie.");
+      response.send();
+    } catch (e) {
+      console.log(e);
+    }
+    console.log('Dance Finished Logging.');
+    return false;
+  }
+);
+
 app.intent('Forward',
   {
     "slots":{"steps":"NUMBER","speed":"NUMBER"},
