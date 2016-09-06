@@ -128,8 +128,8 @@ app.intent('Dance',
       pn.publish(publishConfig, function(status, response) {
         console.log(status, response);
       })
-      console.log('\<audio src="https:\/\/dronemusic.herokuapp.com\/drone.mp3" \/\>');
-      response.say('Drone has started to Dance. Lets get down people and boogie. <audio src="https:\/\/dronemusic.herokuapp.com\/drone.mp3" />');
+      console.log('1+\<audio src="https:\/\/dronemusic.herokuapp.com\/drone.mp3" \/\>');
+      response.say('Drone has started to Dance. Lets get down people and boogie. <audio src="https://dronemusic.herokuapp.com/drone.mp3" />');
       response.send();
     } catch (e) {
       console.log(e);
