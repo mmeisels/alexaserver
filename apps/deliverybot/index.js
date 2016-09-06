@@ -133,7 +133,7 @@ app.intent('Dance',
     } catch (e) {
       console.log(e);
     }
-    console.log('Dance Finished Logging.');
+    console.log('Dance Finished Logging .');
     return false;
   }
 );
