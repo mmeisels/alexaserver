@@ -129,7 +129,7 @@ app.intent('Dance',
         console.log(status, response);
       })
       console.log('1+\<audio src="https:\/\/dronemusic.herokuapp.com\/drone.mp3" \/\>');
-      response.say("Drone has started to Dance. Lets get down people and boogie. <audio src='http://dronemusic.herokuapp.com/drone.mp3' />");
+      response.say("Drone has started to Dance. Lets get down people and boogie. <audio src='https://dronemusic.herokuapp.com/drone.mp3' />");
       response.send();
     } catch (e) {
       console.log(e);
