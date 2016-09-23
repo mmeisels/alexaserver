@@ -17,10 +17,12 @@ app.error = function( exception, request, response ) {
 	response.say( 'Sorry an error occured ' + error.message);
 };
 
-app.intent('sayNumber',
+app.intent('sportstg',
   {
 		"utterances":[
-			"tell me my next game",]
+			"tell me my next game",
+		"where my next game is",
+	"where is my next game"]
   },
   function(request,response) {
     response.say("Hi Glen. Your next game will be in 3 hours time. The game is against Tullamarine. Have a look at the Sports TG app for directions. Good luck with the game, Glen. ");
