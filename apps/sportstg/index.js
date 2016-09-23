@@ -25,7 +25,7 @@ app.intent('sportstg',
 	"where is my next game"]
   },
   function(request,response) {
-    response.say("Hi Glen. Your next game will be in 3 hours time. The game is against Tullamarine. Have a look at the Sports TG app for directions. Good luck with the game, Glen. ");
+    response.say("Hi Glen. Your next game will be in 3 hours time. The game is against Tullamarine. Have a look at the Sports TG app for directions. Good luck with the game and enjoy the rest of Dreamforce. ");
   }
 );
 
